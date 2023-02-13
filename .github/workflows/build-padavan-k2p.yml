@@ -138,10 +138,19 @@ jobs:
       with:
         name: Padavan-packages
         path: /opt/images
+    - name: Generate release tag
+      id: tag
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      run: |
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
+        touch release.txt
+        echo "::set-output name=status::success"
     - name: Release
       uses: softprops/action-gh-release@v1
       if: always()
       with:
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        body_path: release.txt
         files: /opt/images
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
