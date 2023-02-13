@@ -89,7 +89,7 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_ALDRIVER=y" >> .config  #阿里云盘  ~3m
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config #zerotier ~1.3M
         echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=n" >> .config #aliddns
-        echo "CONFIG_FIRMWARE_INCLUDE_HTTPD=y" >> .config #管理界面https
+        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=y" >> .config #管理界面https
 
         else
         echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=n" >> .config #MENTOHUST
