@@ -149,7 +149,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: always()
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
+        tag_name: $(date +"%Y.%m.%d-%H%M")
         body_path: release.txt
         files: /opt/images
     - name: Remove old Releases
