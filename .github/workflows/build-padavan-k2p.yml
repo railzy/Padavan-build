@@ -143,15 +143,15 @@ jobs:
         path: /opt/images
     - name: Get current date
       id: date
-      run: echo "::set-output name=today::$(date +'%Y-%m-%d')"
+      run: echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
     - name: Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v0.1.15
       if: always()
       with:
         tag_name: ${{ steps.date.outputs.today }}
         files: /opt/images/*
     - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.1.0
+      uses: dev-drprasad/delete-older-releases@v0.2.0
       if: always()
       with:
         keep_latest: 3
